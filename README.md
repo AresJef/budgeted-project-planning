@@ -15,6 +15,7 @@
 
 ```text
 budgeted-project-planning/
+├── .gitignore
 ├── SKILL.md
 ├── README.md
 ├── LICENSE
@@ -35,17 +36,9 @@ budgeted-project-planning/
 
 先核对目标宿主实际支持的用户级或项目级 Skill 目录及发现方式，再复制整个包到其中的独立 `budgeted-project-planning/` 目录。不要只复制 SKILL.md，也不要把本目录或某个示例路径直接视为所有宿主的安装位置。
 
-可将以下请求交给支持本地 Skill 的 Agent：
+Agent 从本地完整包安装时，应核实当前宿主支持的 Skill 安装位置和用户指定的用户级或项目级范围。完整复制 SKILL.md、references/、README.md 和 LICENSE，保留目录层次；OpenAI 宿主可同时保留可选的 agents/openai.yaml，其他宿主按其支持情况处理。
 
-```text
-请从我提供的 budgeted-project-planning 完整包安装此 Skill。
-先核实当前宿主支持的 Skill 安装位置和我指定的用户级或项目级范围。
-完整复制 SKILL.md、references/、README.md 和 LICENSE，保留目录层次。
-OpenAI 宿主可同时保留可选的 agents/openai.yaml；其他宿主按其支持情况处理。
-若存在同名目录或 Skill，先只读比较来源和差异，不覆盖我的修改。
-安装后检查格式、相对引用、发现结果，并做一次仅文本的显式调用验证。
-安装和验证不授予项目实施权限。
-```
+若存在同名目录或 Skill，先只读比较来源和差异，不覆盖用户修改。安装后检查格式、相对引用、发现结果，并做一次仅文本的显式调用验证。安装和验证不授予项目实施权限。
 
 安装后确认 frontmatter 中的 `name: budgeted-project-planning`、四份 references 和全部相对引用有效，并确认宿主发现了实际安装的文件。宿主未发现时按其真实刷新或加载方式处理；文件复制成功不等于已经加载。
 
@@ -80,17 +73,13 @@ OpenAI 宿主可同时保留可选的 agents/openai.yaml；其他宿主按其支
 本目录可直接作为独立仓库根目录，SKILL.md 与 README.md、LICENSE 同级。建议仓库名为 `budgeted-project-planning`；用户可自行选择账号、可见性和版本标记。本包的制作不代表远程仓库已创建或发布。
 
 1. 自行在 GitHub 创建仓库，避免额外生成冲突的 README 或许可证。
-2. 将本目录全部八个文件上传到仓库根，保留 `references/` 和 `agents/` 子目录，不额外套一层同名目录。
+2. 将本目录全部九个文件上传到仓库根，保留 `references/` 和 `agents/` 子目录，不额外套一层同名目录。
 3. 发布后用实际仓库 URL 和所选版本交给目标宿主安装器，明确根路径为 `.`、安装名称为 `budgeted-project-planning`，安装完整包并完成发现与文本调用验证。
 
-可使用以下请求，替换占位信息后再发送：
+用户可复制以下一句话交给 Agent：
 
 ```text
-请用当前宿主支持的 Skill 安装方式，从 <实际 GitHub 仓库 URL>
-安装仓库根目录的 budgeted-project-planning，根路径为 .。
-使用 <选定提交或标签>，先核实实际安装位置，完整获取核心文件和 references。
-保留 README、LICENSE；agents/openai.yaml 是可选的 OpenAI 元数据。
-同名冲突先只读比较，不覆盖用户内容。验证加载，不启动项目实施。
+请帮我安装这个 Skill：https://github.com/AresJef/budgeted-project-planning
 ```
 
 ## 来源、许可与验证边界
