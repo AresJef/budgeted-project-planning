@@ -25,12 +25,13 @@ budgeted-project-planning/
     ├── planning-and-decisions.md
     ├── budget-and-overrun.md
     ├── validation-and-evidence.md
+    ├── performance-decisions.md
     └── records-and-delivery.md
 ```
 
-四份引用分别提供 [步骤和核心决策](references/planning-and-decisions.md)、[预算与超时处理](references/budget-and-overrun.md)、[验证与证据](references/validation-and-evidence.md)、[台账、恢复与交付](references/records-and-delivery.md)。按任务阶段读取，保留文件层次和相对链接。
+引用分别提供 [步骤和核心决策](references/planning-and-decisions.md)、[预算与超时处理](references/budget-and-overrun.md)、[验证与证据](references/validation-and-evidence.md)、[性能候选与采用决策](references/performance-decisions.md)、[台账、恢复与交付](references/records-and-delivery.md)。按任务阶段读取；制定或调整性能优化计划，以及执行候选验证、补证、退化修正和采用取舍时，读取性能候选与采用决策；普通不涉及性能优化的计划不强加整套性能流程。保留文件层次和相对链接。
 
-[agents/openai.yaml](agents/openai.yaml) 是可选的 OpenAI UI 元数据，只提供名称、简介和调用提示。其他宿主可忽略或不安装该文件；正文和 references 不依赖它。安装核心须完整包含 SKILL.md 与四份 references，分发时保留 README 和 LICENSE。
+[agents/openai.yaml](agents/openai.yaml) 是可选的 OpenAI UI 元数据，只提供名称、简介和调用提示。其他宿主可忽略或不安装该文件；正文和 references 不依赖它。安装核心须完整包含 SKILL.md 与全部 references，分发时保留 README 和 LICENSE。
 
 ## 本地安装
 
@@ -40,7 +41,7 @@ Agent 从本地完整包安装时，应核实当前宿主支持的 Skill 安装�
 
 若存在同名目录或 Skill，先只读比较来源和差异，不覆盖用户修改。安装后检查格式、相对引用、发现结果，并做一次仅文本的显式调用验证。安装和验证不授予项目实施权限。
 
-安装后确认 frontmatter 中的 `name: budgeted-project-planning`、四份 references 和全部相对引用有效，并确认宿主发现了实际安装的文件。宿主未发现时按其真实刷新或加载方式处理；文件复制成功不等于已经加载。
+安装后确认 frontmatter 中的 `name: budgeted-project-planning`、全部 references 和相对引用有效，并确认宿主发现了实际安装的文件。宿主未发现时按其真实刷新或加载方式处理；文件复制成功不等于已经加载。
 
 ## 使用示例
 
@@ -73,7 +74,7 @@ Agent 从本地完整包安装时，应核实当前宿主支持的 Skill 安装�
 本目录可直接作为独立仓库根目录，SKILL.md 与 README.md、LICENSE 同级。建议仓库名为 `budgeted-project-planning`；用户可自行选择账号、可见性和版本标记。本包的制作不代表远程仓库已创建或发布。
 
 1. 自行在 GitHub 创建仓库，避免额外生成冲突的 README 或许可证。
-2. 将本目录全部九个文件上传到仓库根，保留 `references/` 和 `agents/` 子目录，不额外套一层同名目录。
+2. 将 SKILL.md、README.md、LICENSE、.gitignore、agents/ 和 references/ 上传到仓库根，保留子目录结构，不额外套一层同名目录。
 3. 发布后用实际仓库 URL 和所选版本交给目标宿主安装器，明确根路径为 `.`、安装名称为 `budgeted-project-planning`，安装完整包并完成发现与文本调用验证。
 
 用户可复制以下一句话交给 Agent：
@@ -84,8 +85,9 @@ Agent 从本地完整包安装时，应核实当前宿主支持的 Skill 安装�
 
 ## 来源、许可与验证边界
 
-唯一内容基线：用户定稿《项目开发规划3-修订稿.md》版本 3，34,256 字节。
-基线 SHA-256：`8ed08faa94a5a87fdd13c02b40b6de708e99a128b07b76536e4446fb22c5dd4b`。
+初始内容基线：用户定稿《项目开发规划3-修订稿.md》版本 3，34,256 字节。
+初始基线 SHA-256：`8ed08faa94a5a87fdd13c02b40b6de708e99a128b07b76536e4446fb22c5dd4b`。
+性能候选、补证与采用取舍按后续项目复盘补充；来源项目的数值和批准决定不构成其他项目的默认门槛或授权。
 
 采用 [MIT License](LICENSE)，版权为 `Copyright (c) 2026 AresJef`。
 
